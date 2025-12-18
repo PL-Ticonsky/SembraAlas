@@ -74,3 +74,9 @@
 - Como cliente, quiero eliminar mi cuenta para controlar mis datos.
     
     →  **E1, E2, E3 (Tener Reglas para esto)**
+**Seguridad**
+
+- Como cliente, quiero que mis datos esten cifrados>
+→  **E1 ,E2, E3**
+- Como cliente, quiero que nadie tenga acceso a mis cuentas bancarias mas alla de la pasarela de pago>
+→ **E1 ,E2, E3**
