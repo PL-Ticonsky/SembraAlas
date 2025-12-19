@@ -14,6 +14,7 @@
 - **E1 — Registrado (sin compra):** cuenta + sesión iniciada.
 - **E2 — Cliente con pedido:** al menos un pedido creado (pendiente/aprobado/enviado…).
 - **E3 — Cliente verificado:** al menos un pedido **entregado** (habilita reseñas “comprador verificado”).
+- **E4 — Cliente Mayorista:** Cuenta tipo mayorista , X productos minimos por compra (habilita Compra mayorista).
 
 **Transiciones típicas**
 - E0 → E1: registro exitoso (y/o login).
@@ -335,5 +336,19 @@
 **Criterios de aceptación (GWT)**
 - **Given** que pago, **When** ingreso datos de tarjeta, **Then** se capturan en la pasarela (no en el servidor propio).
 - **Given** que reviso mi pedido, **When** veo detalles, **Then** nunca se muestra información completa de tarjeta (solo últimos 4 si aplica).
+
+---
+### CUST-22 — Precio especial mayorista
+
+- **Historia:** Como **cliente mayorista** quiero tener una seccion especifica para mis compras (con precios y demas ajustados) .
+- **Estados:** E4
+- **Prioridad:** MVP
+- **Nivel de aprendizaje:** Bajo 
+- **Dependencias:** Pasarela de pago correctamente integrada
+
+**Criterios de aceptación (GWT)**
+- **Given** entro como mayorista , **When** quiero comprar, **Then** Tengo un precio especial
+
+
 
 ---
