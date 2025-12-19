@@ -1,4 +1,4 @@
-# Historias de Usuario — Administrador*
+
 
 # Épica A — Gestión de pedidos (operación y estado)
 
