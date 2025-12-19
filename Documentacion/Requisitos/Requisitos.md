@@ -4,8 +4,6 @@
 | Campo | Valor |
 | --- | --- |
 | **ID** | REQ-FE-001 |
-| **Tipo** | FUNC / NFR / CONSTRAINT |
-| **Módulo** | Frontend / Backend / Pagos / Envíos / Admin |
 | **Fuente** | PO / Cliente / Equipo / Legal |
 | **Actor (si aplica)** | Invitado / Cliente / Mayorista / Admin |
 | **Historias asociadas** | CUST-01, ... |
