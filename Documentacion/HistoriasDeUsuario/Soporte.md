@@ -17,19 +17,6 @@
 
 ---
 
-## TECH-02 — CI que valide cada cambio
-
-- **Historia:** Como equipo de desarrollo quiero CI que corra lint + tests + build en cada PR para detectar fallos antes de producción.  
-- **Prioridad:** MVP  
-- **Nivel de aprendizaje:** Medio  
-- **Dependencias:** TECH-01  
-
-### Criterios de aceptación (GWT)
-
-- **Given** abro un PR, **When** se ejecuta el workflow, **Then** veo estado de lint + tests + build.
-- **Given** un test falla, **When** el workflow termina, **Then** el PR queda bloqueado para merge (regla de branch protection).
-- **Given** el build pasa, **When** hago merge a `main`, **Then** queda registro del run (artefactos/logs).
-
 ---
 
 ## TECH-03 — Entornos: staging y producción con rollback
