@@ -37,6 +37,46 @@ Usa un formato estable:
   - MOD: `FE` (frontend), `BE`, `AUTH`, `PAY`, `SHIP`, `AN`
   - TIPO: `FUNC`, `NFR`, `UI`, `CONSTR`
   - NNN: `001`, `002`, `003`…
+## Acrónimos (qué significa cada uno)
+
+### MOD (módulo / área del sistema)
+- **FE** = *FrontEnd*  
+  Todo lo que ve y usa el usuario en el navegador/app: páginas, componentes UI, estilos, navegación.
+
+- **BE** = *BackEnd*  
+  Lógica del servidor: APIs, reglas de negocio, autenticación en servidor, procesamiento de pedidos, etc.
+
+- **AUTH** = *Authentication / Authorization*  
+  **AuthN** (autenticación): iniciar sesión, recuperar contraseña, tokens.  
+  **AuthZ** (autorización): permisos/roles (qué puede hacer/ver cada rol).
+
+- **PAY** = *Payments* (pagos)  
+  Integración de pasarelas, confirmación de pago, estados (aprobado/rechazado), conciliación.
+
+- **SHIP** = *Shipping* (envíos / logística)  
+  Cálculo de tarifas, direcciones, guía/transportadora, estados de envío.
+
+- **AN** = *Analytics* (analítica)  
+  Métricas y eventos: visitas, conversiones, embudos, tracking (GA4, Meta Pixel, etc.).
+
+---
+
+### TIPO (tipo de requisito)
+- **FUNC** = *Functional* (funcional)  
+  Describe **qué hace** el sistema (comportamiento).  
+  Ej: “El usuario puede agregar un producto al carrito”.
+
+- **NFR** = *Non-Functional Requirement* (no funcional)  
+  Describe **cómo debe comportarse** en calidad: rendimiento, seguridad, disponibilidad, accesibilidad.  
+  Ej: “El sitio debe cargar en < X segundos”.
+
+- **UI** = *User Interface* (interfaz de usuario)  
+  Requisitos de pantalla/UX: elementos, layout, navegación visual (ojo: sigue siendo funcional, pero enfocado en interfaz).  
+  Ej: “El menú muestra 4 secciones y es accesible en móvil”.
+
+- **CONSTR** = *Constraint* (restricción)  
+  Algo impuesto por contexto/decisión: tecnologías, navegadores soportados, normas, límites.  
+  Ej: “Soportar Chrome/Firefox” o “Usar pasarela X”.
 
 Ej: `REQ-FE-UI-001`
 
