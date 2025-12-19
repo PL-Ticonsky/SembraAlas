@@ -1,4 +1,4 @@
-# Historias de Usuario  Soporte*
+
 
 # Épica A — Ingeniería de entrega (CI/CD + entornos)
 
