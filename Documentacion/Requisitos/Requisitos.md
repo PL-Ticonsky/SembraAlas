@@ -1,14 +1,23 @@
+
+# Plantilla De los requerimientos
+
 | Campo | Valor |
-|---|---|
-| **# Requisito** | 01 |
-| **Tipo de requisito** | — |
-| **Actor** | — |
-| **Historias de usuario asociadas** | CU05 |
-| **Descripción** | El sistema debe enviar recordatorios de medicación al paciente a través de WhatsApp, y debe registrar la confirmación de la toma cuando el paciente responda con un mensaje de confirmación (“Sí”). |
-| **Razón** | Garantizar que el paciente participe activamente en el cumplimiento del tratamiento. |
-| **Autor** | Daniela Muñoz |
-| **Criterio de medición** | El paciente recibe recordatorios y confirma tomas vía WhatsApp. |
-| **Prioridad** | Alta |
-| **Módulo asociado** | Envío notificaciones |
+| --- | --- |
+| **ID** | REQ-FE-001 |
+| **Tipo** | FUNC / NFR / CONSTRAINT |
+| **Módulo** | Frontend / Backend / Pagos / Envíos / Admin |
+| **Fuente** | PO / Cliente / Equipo / Legal |
+| **Actor (si aplica)** | Invitado / Cliente / Mayorista / Admin |
+| **Historias asociadas** | CUST-01, ... |
+| **Descripción** | (1 sola cosa, sin ambigüedad) |
+| **Razón** | (por qué existe) |
+| **Prioridad** | Alta / Media / Baja + MVP/V1/V2 |
+| **Criterios de aceptación (GWT)** | 3+ bullets |
+| **Método de verificación** | Manual / Unit / E2E / Revisión |
+| **Dependencias** | REQ-..., US-..., Diseño-... |
+| **Riesgo / Notas** | (qué puede salir mal) |
+| **Estado** | Propuesto / Aprobado / Implementado / Validado |
+| **Autor** | ... |
 | **Versión** | 1.0.0 |
-| **Fecha** | 11/10/2025 |
+| **Fecha** | YYYY-MM-DD |
+
