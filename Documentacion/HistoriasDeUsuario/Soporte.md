@@ -1,9 +1,5 @@
 # Historias de Usuario  Soporte*
 
-como desarrollador quiero ver las metricas de ventas y visitas por usuarios 
-como desarrollador quiero ver cuantos usuarios se han registrado 
-como desarrollador quiero que la web este protegida contra ataques DAOS y demas 
-como desarrollador quiero que la pagina funcione igual para mil personas o para 1 persona
 # Épica A — Ingeniería de entrega (CI/CD + entornos)
 
 ## TECH-01 — Repo listo para trabajar en equipo
