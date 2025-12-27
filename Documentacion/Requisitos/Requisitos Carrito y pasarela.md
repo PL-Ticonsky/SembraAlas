@@ -109,3 +109,69 @@
 - **REQ-ORD-01 (DATA, MVP)** — El sistema debe crear un registro interno **“Pedido”** antes de pagar con estado **PENDIENTE_PAGO**.
 - **REQ-ORD-02 (FR, MVP)** — Al recibir confirmación, el pedido cambia a **PAGADO / RECHAZADO / PENDIENTE** y se guarda el **transaction_id** de la pasarela.
 - **REQ-ORD-03 (FR, MVP)** — El sistema debe poder **buscar un pedido por order_id** y mostrar su estado (para soporte por WhatsApp).
+
+# 📌 Requisitos CUST-01 — Información de la problemática (Landing)
+
+## REQ-CUST-01-01 (UI, MVP)
+El sistema debe mostrar información descriptiva de la problemática ambiental al momento de ingresar a la página principal, sin requerir interacción previa del usuario.
+
+## REQ-CUST-01-02 (UI, MVP)
+El sistema debe mostrar contenido visual asociado a la problemática, incluyendo imágenes relevantes.
+
+## REQ-CUST-01-03 (UX, MVP)
+El sistema debe presentar las imágenes de forma fluida y optimizada, evitando cortes, saltos bruscos o tiempos de carga perceptibles para el usuario.
+
+---
+
+# 📌 Requisitos CUST-02 — Logros del equipo
+
+## REQ-CUST-02-01 (UI, MVP)
+El sistema debe mostrar información relacionada con los logros alcanzados por el equipo, tales como reconocimientos, convocatorias, premios o participaciones relevantes.
+
+## REQ-CUST-02-02 (UX, MVP)
+El sistema debe presentar los logros de forma clara y ordenada para generar confianza y credibilidad en el proyecto.
+
+---
+
+# 📌 Requisitos CUST-03 — Medios de contacto
+
+## REQ-CUST-03-01 (UI, MVP)
+El sistema debe mostrar de forma visible los medios de contacto disponibles del proyecto.
+
+## REQ-CUST-03-02 (UI, MVP)
+El sistema debe mostrar enlaces funcionales que redirijan directamente a cada medio de contacto disponible.
+
+## REQ-CUST-03-03 (UI, MVP)
+El sistema debe disponer de un botón específico por cada medio de contacto, claramente identificable para el usuario.
+
+## REQ-CUST-03-04 (INT, MVP)
+El sistema debe contar con una lógica en el backend que permita la conexión a los medios de contacto mediante APIs o esquemas de integración externos, cuando aplique (por ejemplo, WhatsApp, correo o redes sociales).
+
+---
+
+# 📌 Requisitos TECH-12 — Pasarela de pago y formulario
+
+## REQ-TECH-12-01 (UI, MVP)
+El sistema debe poseer una vista dedicada que contenga un formulario para la captura de datos del usuario durante el proceso de pago.
+
+## REQ-TECH-12-02 (SEC, MVP)
+El sistema debe presentar el formulario de pago bajo un esquema HTTPS, garantizando la transmisión segura de la información del usuario.
+
+## REQ-TECH-12-03 (INT, MVP)
+El sistema debe conectarse de forma segura con la API de la pasarela de pago seleccionada, siguiendo las especificaciones oficiales del proveedor.
+
+## REQ-TECH-12-04 (INT, MVP)
+El sistema debe enviar la información capturada en el formulario a la pasarela de pago a través de su API, incluyendo los datos requeridos para la creación de la transacción.
+
+## REQ-TECH-12-05 (INT, MVP)
+El sistema debe recibir información desde la pasarela de pago, mediante su API, sobre el estado de la transacción (aprobada, rechazada, pendiente u otro estado definido).
+
+## REQ-TECH-12-06 (INT, MVP)
+El sistema debe enviar la información recibida desde la pasarela de pago a un correo de soporte, utilizando una API de envío de correos.
+
+## REQ-TECH-12-07 (INT, MVP)
+El sistema debe implementar una lógica interna de control que evite la duplicación o eliminación accidental de pagos durante el procesamiento de eventos.
+
+## REQ-TECH-12-08 (INT, MVP)
+El sistema debe procesar los webhooks de la pasarela de pago de forma idempotente, garantizando que un mismo evento no sea procesado más de una vez.
+
