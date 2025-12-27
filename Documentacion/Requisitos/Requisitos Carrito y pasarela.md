@@ -175,3 +175,68 @@ El sistema debe implementar una lógica interna de control que evite la duplicac
 ## REQ-TECH-12-08 (INT, MVP)
 El sistema debe procesar los webhooks de la pasarela de pago de forma idempotente, garantizando que un mismo evento no sea procesado más de una vez.
 
+# 📌 Requisitos CUST-07 — Catálogo de productos y carrito
+
+## 🧩 A) Exposición y obtención de productos (Backend / API)
+
+### REQ-CUST-07-01 (API, MVP)
+El backend debe exponer una función o endpoint que retorne la lista de todos los productos disponibles para venta.
+
+### REQ-CUST-07-02 (API, MVP)
+El backend debe utilizar un DTO (Data Transfer Object) para la respuesta del catálogo, el cual incluya únicamente la información necesaria para la vista de catálogo (por ejemplo: id, nombre, precio, imagen principal y estado de disponibilidad).
+
+---
+
+## 🧩 B) Carrito de compras
+
+### REQ-CUST-07-03 (API, MVP)
+El backend debe exponer una función que permita agregar productos disponibles al carrito de compras.
+
+### REQ-CUST-07-04 (FUNC, MVP)
+El sistema debe permitir agregar un producto al carrito indicando la cantidad seleccionada y, cuando aplique, sus variantes disponibles.
+
+---
+
+## 🧩 C) Búsqueda de productos en el catálogo
+
+### REQ-CUST-07-05 (FUNC, MVP)
+El catálogo debe permitir buscar productos mediante texto ingresado por el usuario.
+
+### REQ-CUST-07-06 (UI, MVP)
+El catálogo debe incluir un campo (label/input) de texto visible para ingresar términos de búsqueda.
+
+### REQ-CUST-07-07 (FUNC, MVP)
+El sistema debe ejecutar la búsqueda de productos utilizando el contenido ingresado en el campo de texto de búsqueda.
+
+---
+
+## 🧩 D) Filtrado de productos
+
+### REQ-CUST-07-08 (FUNC, MVP)
+El catálogo debe permitir filtrar productos según criterios definidos (por ejemplo: categoría, precio, disponibilidad u otros).
+
+### REQ-CUST-07-09 (UI, MVP)
+El catálogo debe incluir un botón visible que permita acceder a las opciones de filtrado de productos.
+
+### REQ-CUST-07-10 (UX, MVP)
+La interfaz de filtrado debe permitir seleccionar opciones mediante interacción *drag and drop*, cuando aplique.
+
+---
+
+## 🧩 E) Estados del catálogo
+
+### REQ-CUST-07-11 (UX, MVP)
+El sistema debe mostrar un mensaje informativo cuando no existan productos disponibles para mostrar en el catálogo.
+
+---
+
+## 🧩 F) Acceso a ficha y detalle del producto
+
+### REQ-CUST-07-12 (NAV, MVP)
+El sistema debe permitir acceder a la ficha o vista de detalle de un producto desde el catálogo.
+
+### REQ-CUST-07-13 (UI, MVP)
+El catálogo debe incluir un botón visible que permita acceder a la vista de detalle del producto.
+
+### REQ-CUST-07-14 (FUNC, MVP)
+La ficha del producto debe permitir agregar el producto al carrito seleccionando cantidad y variantes disponibles.
