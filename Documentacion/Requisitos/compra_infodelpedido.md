@@ -248,7 +248,7 @@
 | **Descripción** | La ficha del producto debe permitir agregar al carrito seleccionando cantidad y variantes. |
 | **Razón** | Comprar productos personalizados. |
 | **Prioridad** | Alta – MVP |
-| **Criterios de aceptación (GWT)** | - Dado un producto<br>- Cuando selecciona variantes y cantidad<br>- Entonces se agrega al carrito |
+| **Criterios de aceptación (GWT)** | - Dado un/os producto/s<br>- Cuando selecciona variantes y cantidad<br>- Entonces se agrega al carrito |
 | **Método de verificación** | E2E |
 | **Dependencias** | REQ-CAR-001 |
 | **Riesgo / Notas** | Stock insuficiente |
@@ -256,6 +256,28 @@
 | **Autor** | Andro |
 | **Versión** | 1.0.0 |
 | **Fecha** | 2025-12-27 |
+
+
+### REQ-FE-005-01 — Acceso a vista de detalle
+| Campo | Valor |
+| --- | --- |
+| **ID** | REQ-FE-005-04 |
+| **Fuente** | Cliente |
+| **Actor (si aplica)** | Cliente |
+| **Historias asociadas** | CUST-05 |
+| **Descripción** | El sistema debe permitir acceder a la vista de detalle mediante un botón visible en la interfaz web. |
+| **Razón** | Permitir al cliente encontrar fácilmente el catálogo de productos. |
+| **Prioridad** | Alta – MVP |
+| **Criterios de aceptación (GWT)** | - Dado un cliente en el sitio<br>- Cuando presiona el botón de un producto<br>- Entonces se muestra la vista de detalle de producto |
+| **Método de verificación** | E2E |
+| **Dependencias** | Diseño-UI |
+| **Riesgo / Notas** | Botón mal ubicado reduce descubrimiento |
+| **Estado** | Propuesto |
+| **Autor** | Andro |
+| **Versión** | 1.0.0 |
+| **Fecha** | 2025-12-27 |
+
+---
 
 ---
 
@@ -303,6 +325,27 @@
 
 ---
 
+
+### REQ-BE-012-03 — Función detalle pedido
+| Campo | Valor |
+| --- | --- |
+| **ID** | REQ-FE-012-03 |
+| **Fuente** | Equipo |
+| **Actor (si aplica)** | Sistema |
+| **Historias asociadas** | CUST-12 |
+| **Descripción** | El sistema debe mostrar los pedidos del cliente en sesión |
+| **Razón** | Conocer el estado del envío de los pedidos |
+| **Prioridad** | Alta – MVP |
+| **Criterios de aceptación (GWT)** | - Dado un cliente<br>- Cuando se selecciona<br>- Entonces se muestra su detalles de pedido |
+| **Método de verificación** | E2E |
+| **Dependencias** | REQ-FE-012-01 |
+| **Riesgo / Notas** | Estados incorrectos |
+| **Estado** | Propuesto |
+| **Autor** | Andro |
+| **Versión** | 1.0.0 |
+| **Fecha** | 2025-12-27 |
+
+---
 ## CUST-13 — Estado del pago
 
 ### REQ-FE-013-01 — Visualización del estado del pago
