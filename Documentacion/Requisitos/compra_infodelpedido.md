@@ -86,6 +86,28 @@
 | **Versión** | 1.0.0 |
 | **Fecha** | 2025-12-27 |
 
+
+---
+
+### REQ-BE-004-03 — Función para obtener productos
+| Campo | Valor |
+| --- | --- |
+| **ID** | REQ-BE-004-03 |
+| **Fuente** | Equipo |
+| **Actor (si aplica)** | Sistema |
+| **Historias asociadas** | CUST-04 |
+| **Descripción** | El backend debe exponer una función que agregue  los productos disponibles al carrito. |
+| **Razón** | Proveer productos seleccionados al carrito. |
+| **Prioridad** | Alta – MVP |
+| **Criterios de aceptación (GWT)** | - Dado el endpoint<br>- Cuando se compra<br>- Entonces agrega el productos |
+| **Método de verificación** | Unit |
+| **Dependencias** | BD-Productos |
+| **Riesgo / Notas** | Datos incompletos |
+| **Estado** | Propuesto |
+| **Autor** | Andro |
+| **Versión** | 1.0.0 |
+| **Fecha** | 2025-12-27 |
+
 ---
 
 ### REQ-FE-004-03 — Búsqueda de productos
@@ -144,6 +166,27 @@
 | **Método de verificación** | Manual |
 | **Dependencias** | REQ-FE-004-02 |
 | **Riesgo / Notas** | Mensaje poco claro |
+| **Estado** | Propuesto |
+| **Autor** | Andro |
+| **Versión** | 1.0.0 |
+| **Fecha** | 2025-12-27 |
+
+---
+
+### REQ-FE-004-06 — Mensaje sin resultados
+| Campo | Valor |
+| --- | --- |
+| **ID** | REQ-FE-004-06 |
+| **Fuente** | Cliente |
+| **Actor (si aplica)** | Cliente |
+| **Historias asociadas** | CUST-04 |
+| **Descripción** | El sistema debe poseer una vista agradable y facíl de manejar |
+| **Razón** | Evitar confusión del usuario. |
+| **Prioridad** | Alta – MVP |
+| **Criterios de aceptación (GWT)** | - el diseño no cansa la vista |
+| **Método de verificación** | Manual |
+| **Dependencias** | REQ-FE-004-02 |
+| **Riesgo / Notas** | colores que cansan |
 | **Estado** | Propuesto |
 | **Autor** | Andro |
 | **Versión** | 1.0.0 |
