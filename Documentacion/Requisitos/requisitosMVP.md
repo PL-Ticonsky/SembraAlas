@@ -1,242 +1,310 @@
-# Requerimientos Carrito y pasarela
-
-## A) UI (acceso y vista del carrito)
-
-- **REQ-CUST07-01 (UI)** — El sistema debe mostrar un acceso al carrito visible (icono/botón) desde el header o navegación principal.
-- **REQ-CUST07-02 (UI)** — El acceso al carrito debe mostrar un indicador de cantidad de ítems (badge) cuando haya productos.
-- **REQ-CUST07-03 (UI)** — El sistema debe ofrecer una vista de carrito (página o drawer) que liste los ítems agregados.
-- **REQ-CUST07-04 (UI)** — Cada ítem del carrito debe mostrar mínimo: nombre, precio unitario, cantidad, subtotal del ítem (precio×cantidad).
-- **REQ-CUST07-05 (UI)** — La vista del carrito debe mostrar resumen: subtotal general y total (si aún no hay envíos/impuestos, al menos subtotal).
-- **REQ-CUST07-06 (UI)** — El botón “Continuar / Ir a pagar” debe estar deshabilitado si el carrito está vacío.
+# 📘 Requerimientos Funcionales y Técnicos — MVP
+Proyecto: Expedición Tabio  
+Alcance: MVP sin sistema de usuarios (checkout como invitado)
 
 ---
 
-## B) Funcional (acciones core: agregar, quitar, vaciar)
+## 📦 1. CATÁLOGO DE PRODUCTOS
 
-- **REQ-CUST07-07 (FR)** — El sistema debe permitir agregar un producto al carrito desde la ficha o catálogo.
-- **REQ-CUST07-08 (FR)** — Si el producto ya existe en el carrito, al agregarlo de nuevo, el sistema debe incrementar la cantidad (no duplicar filas).
-- **REQ-CUST07-09 (FR)** — El sistema debe permitir aumentar/disminuir cantidad de un ítem desde la interfaz del carrito.
-- **REQ-CUST07-10 (FR)** — El sistema debe permitir eliminar un ítem del carrito (removerlo por completo).
-- **REQ-CUST07-11 (FR)** — Si la cantidad de un ítem llega a 0, el sistema debe removerlo del carrito.
-- **REQ-CUST07-12 (FR)** — El sistema debe permitir vaciar el carrito completo con una sola acción (“Eliminar todo”).
-- **REQ-CUST07-13 (FR)** — Al realizar cambios (add/remove/qty), el sistema debe recalcular totales de forma inmediata.
+### A) Exposición y obtención de productos (Backend / API)
 
----
+- **REQ-CAT-01 (API, MVP)**  
+  El backend debe exponer un endpoint que retorne la lista de todos los productos disponibles para venta.
 
-## C) Reglas de negocio y validaciones (stock y consistencia)
-
-- **REQ-CUST07-14 (BR)** — El sistema debe impedir que la cantidad solicitada supere el stock disponible y debe informar el máximo permitido.
-- **REQ-CUST07-15 (BR)** — Si un producto en el carrito queda no disponible (sin stock / despublicado), el sistema debe notificarlo y bloquear el pago hasta corregirlo (quitar o ajustar).
-- **REQ-CUST07-16 (BR)** — El total del carrito debe calcularse usando precios vigentes (no confiar en valores manipulados del lado cliente).
+- **REQ-CAT-02 (API, MVP)**  
+  El backend debe utilizar un DTO para la respuesta del catálogo, incluyendo únicamente información necesaria para la vista de catálogo (id, nombre, precio, imagen principal y disponibilidad).
 
 ---
 
-## D) Persistencia del carrito (pendiente por definir)
+### B) Búsqueda de productos
 
-> Aquí no se fija una sola solución: queda como Pendiente por definir y se documentan opciones.
-> 
-- **REQ-CUST07-17 (DATA)** — **Pendiente por definir** — El carrito debe persistir cuando el usuario recarga la página.
+- **REQ-CAT-03 (FUNC, MVP)**  
+  El catálogo debe permitir buscar productos mediante texto ingresado por el usuario.
 
-**Opciones:**
+- **REQ-CAT-04 (UI, MVP)**  
+  El catálogo debe incluir un campo de texto visible para ingresar términos de búsqueda.
 
-- **Opción A (MVP rápido):** persistir en `localStorage` para invitado.
-- **Opción B (más robusto):** persistir en BD asociado a usuario logueado.
-- **Opción C (híbrido):** guest local → al loguear se migra.
-
----
-
-## E) Checkout / pasarela (salida del carrito)
-
-- **REQ-CUST07-18 (FR)** — Al presionar “Ir a pagar”, el sistema debe crear una intención de checkout (o iniciar flujo de pedido) y navegar al paso de pago/checkout.
-- **REQ-CUST07-19 (FR)** — El sistema debe validar que el carrito no esté vacío y que los ítems sean válidos antes de permitir el checkout.
+- **REQ-CAT-05 (FUNC, MVP)**  
+  El sistema debe ejecutar la búsqueda utilizando el contenido ingresado en el campo de texto.
 
 ---
 
-## F) Errores / Mensajes (calidad de UX)
+### C) Filtrado de productos
 
-- **REQ-CUST07-20 (UX)** — Si ocurre un error al actualizar el carrito, el sistema debe mostrar un mensaje claro y mantener el estado consistente (no dejar totales rotos).
-- **REQ-CUST07-21 (UX)** — Al vaciar el carrito, el sistema debe pedir confirmación para evitar acciones accidentales (modal o confirm inline).
+- **REQ-CAT-06 (FUNC, MVP)**  
+  El catálogo debe permitir filtrar productos según criterios definidos (categoría, precio, disponibilidad u otros).
 
----
+- **REQ-CAT-07 (UI, MVP)**  
+  El catálogo debe incluir un botón visible para acceder a las opciones de filtrado.
 
-## G) Seguridad (mínimo para no dejar huecos)
-
-- **REQ-CUST07-22 (SEC)** — El servidor debe recalcular precios/totales y validar stock en backend antes de checkout (no confiar en el frontend).
-- **REQ-CUST07-23 (SEC)** — Las operaciones de carrito deben protegerse contra requests inválidos (IDs inexistentes, cantidades negativas, etc.).
-
----
-
-## H) Analítica mínima (útil para negocio)
-
-- **REQ-CUST07-24 (ANA)** — El sistema debe registrar eventos mínimos: `add_to_cart`, `remove_from_cart`, `begin_checkout` (aunque sea con una herramienta básica).
-
-# 
-
-# Requerimientos — Pasarela de pago + Pedido interno (MVP sin usuarios)
-
-## A) Datos mínimos a capturar (DATA)
-
-- **REQ-PAY-01 (DATA, MVP)** — El sistema debe capturar mínimo del pagador: **nombre, email, teléfono** (para contacto y comprobante).
-- **REQ-PAY-02 (DATA, MVP)** — Si hay envío, el sistema debe capturar **dirección de entrega** (o delegarlo a la pasarela si soporta shipping form).
-- **REQ-PAY-03 (DATA, MVP)** — El sistema debe generar un **order_id único** (referencia) por **intento de compra**.
+- **REQ-CAT-08 (UX, MVP-OPCIONAL)**  
+  La interfaz de filtrado puede permitir selección mediante interacción *drag and drop*.
 
 ---
 
-## B) Creación de la transacción / sesión (INT/FR)
+### D) Estados del catálogo
 
-- **REQ-PAY-04 (INT, MVP)** — El backend debe crear una “sesión” de pago (transacción/preferencia/form) incluyendo: **order_id, amount, currency, items**, y **datos mínimos del pagador** cuando aplique.
-- **REQ-PAY-05 (FR, MVP)** — El sistema debe **redirigir** (o **abrir widget**) para que el cliente complete el pago **sin ingresar datos sensibles en tu servidor**.
-
----
-
-## C) Retorno del usuario (UX/FR)
-
-- **REQ-PAY-06 (FR, MVP)** — El sistema debe tener una **URL de resultado** para retornar al usuario y mostrar estado de compra (**aprobado / rechazado / pendiente**).
-- **REQ-PAY-07 (UX, MVP)** — La pantalla de resultado debe mostrar mínimo: **estado**, **referencia (order_id)**, **valor**, **moneda**, **fecha**.
+- **REQ-CAT-09 (UX, MVP)**  
+  El sistema debe mostrar un mensaje informativo cuando no existan productos disponibles para mostrar.
 
 ---
 
-## D) Confirmación backend (SEC/INT) — CRÍTICO
+### E) Acceso a ficha y detalle de producto
 
-- **REQ-PAY-08 (INT, MVP)** — El sistema debe recibir **confirmación server-to-server** (webhook/confirmation URL/eventos) para actualizar el pedido **aunque el usuario no regrese**.
-- **REQ-PAY-09 (SEC, MVP)** — El backend debe **validar la autenticidad** de la notificación (firma/secret/headers según pasarela) antes de marcar un pedido como **“pagado”**.
-- **REQ-PAY-10 (SEC, MVP)** — El endpoint de confirmación debe ser **idempotente**: si llega la misma notificación varias veces, **no duplica** el pedido ni el despacho.
+- **REQ-CAT-10 (NAV, MVP)**  
+  El sistema debe permitir acceder a la ficha o vista de detalle de un producto desde el catálogo.
 
----
+- **REQ-CAT-11 (UI, MVP)**  
+  El catálogo debe incluir un botón visible para acceder a la vista de detalle del producto.
 
-## E) Pedido interno (porque no hay usuarios) (FR/DATA)
-
-- **REQ-ORD-01 (DATA, MVP)** — El sistema debe crear un registro interno **“Pedido”** antes de pagar con estado **PENDIENTE_PAGO**.
-- **REQ-ORD-02 (FR, MVP)** — Al recibir confirmación, el pedido cambia a **PAGADO / RECHAZADO / PENDIENTE** y se guarda el **transaction_id** de la pasarela.
-- **REQ-ORD-03 (FR, MVP)** — El sistema debe poder **buscar un pedido por order_id** y mostrar su estado (para soporte por WhatsApp).
-
-# 📌 Requisitos CUST-01 — Información de la problemática (Landing)
-
-## REQ-CUST-01-01 (UI, MVP)
-El sistema debe mostrar información descriptiva de la problemática ambiental al momento de ingresar a la página principal, sin requerir interacción previa del usuario.
-
-## REQ-CUST-01-02 (UI, MVP)
-El sistema debe mostrar contenido visual asociado a la problemática, incluyendo imágenes relevantes.
-
-## REQ-CUST-01-03 (UX, MVP)
-El sistema debe presentar las imágenes de forma fluida y optimizada, evitando cortes, saltos bruscos o tiempos de carga perceptibles para el usuario.
+- **REQ-CAT-12 (FUNC, MVP)**  
+  La ficha del producto debe permitir agregar el producto al carrito seleccionando cantidad y variantes disponibles.
 
 ---
 
-# 📌 Requisitos CUST-02 — Logros del equipo
+## 🛒 2. CARRITO DE COMPRAS
 
-## REQ-CUST-02-01 (UI, MVP)
-El sistema debe mostrar información relacionada con los logros alcanzados por el equipo, tales como reconocimientos, convocatorias, premios o participaciones relevantes.
+### A) UI — Acceso y vista del carrito
 
-## REQ-CUST-02-02 (UX, MVP)
-El sistema debe presentar los logros de forma clara y ordenada para generar confianza y credibilidad en el proyecto.
+- **REQ-CART-01 (UI, MVP)**  
+  El sistema debe mostrar un acceso al carrito visible desde el header o navegación principal.
 
----
+- **REQ-CART-02 (UI, MVP)**  
+  El acceso al carrito debe mostrar un indicador de cantidad de ítems cuando haya productos.
 
-# 📌 Requisitos CUST-03 — Medios de contacto
+- **REQ-CART-03 (UI, MVP)**  
+  El sistema debe ofrecer una vista de carrito que liste los ítems agregados.
 
-## REQ-CUST-03-01 (UI, MVP)
-El sistema debe mostrar de forma visible los medios de contacto disponibles del proyecto.
+- **REQ-CART-04 (UI, MVP)**  
+  Cada ítem debe mostrar: nombre, precio unitario, cantidad y subtotal.
 
-## REQ-CUST-03-02 (UI, MVP)
-El sistema debe mostrar enlaces funcionales que redirijan directamente a cada medio de contacto disponible.
+- **REQ-CART-05 (UI, MVP)**  
+  La vista del carrito debe mostrar subtotal general y total.
 
-## REQ-CUST-03-03 (UI, MVP)
-El sistema debe disponer de un botón específico por cada medio de contacto, claramente identificable para el usuario.
-
-## REQ-CUST-03-04 (INT, MVP)
-El sistema debe contar con una lógica en el backend que permita la conexión a los medios de contacto mediante APIs o esquemas de integración externos, cuando aplique (por ejemplo, WhatsApp, correo o redes sociales).
+- **REQ-CART-06 (UI, MVP)**  
+  El botón “Ir a pagar” debe estar deshabilitado si el carrito está vacío.
 
 ---
 
-# 📌 Requisitos TECH-12 — Pasarela de pago y formulario
+### B) Funcionalidad core
 
-## REQ-TECH-12-01 (UI, MVP)
-El sistema debe poseer una vista dedicada que contenga un formulario para la captura de datos del usuario durante el proceso de pago.
+- **REQ-CART-07 (FR, MVP)**  
+  El sistema debe permitir agregar productos al carrito desde el catálogo o ficha.
 
-## REQ-TECH-12-02 (SEC, MVP)
-El sistema debe presentar el formulario de pago bajo un esquema HTTPS, garantizando la transmisión segura de la información del usuario.
+- **REQ-CART-08 (FR, MVP)**  
+  Si el producto ya existe en el carrito, el sistema debe incrementar la cantidad.
 
-## REQ-TECH-12-03 (INT, MVP)
-El sistema debe conectarse de forma segura con la API de la pasarela de pago seleccionada, siguiendo las especificaciones oficiales del proveedor.
+- **REQ-CART-09 (FR, MVP)**  
+  El sistema debe permitir aumentar o disminuir la cantidad desde el carrito.
 
-## REQ-TECH-12-04 (INT, MVP)
-El sistema debe enviar la información capturada en el formulario a la pasarela de pago a través de su API, incluyendo los datos requeridos para la creación de la transacción.
+- **REQ-CART-10 (FR, MVP)**  
+  El sistema debe permitir eliminar un ítem del carrito.
 
-## REQ-TECH-12-05 (INT, MVP)
-El sistema debe recibir información desde la pasarela de pago, mediante su API, sobre el estado de la transacción (aprobada, rechazada, pendiente u otro estado definido).
+- **REQ-CART-11 (FR, MVP)**  
+  Si la cantidad de un ítem llega a 0, el sistema debe removerlo automáticamente.
 
-## REQ-TECH-12-06 (INT, MVP)
-El sistema debe enviar la información recibida desde la pasarela de pago a un correo de soporte, utilizando una API de envío de correos.
+- **REQ-CART-12 (FR, MVP)**  
+  El sistema debe permitir vaciar el carrito completo con una sola acción.
 
-## REQ-TECH-12-07 (INT, MVP)
-El sistema debe implementar una lógica interna de control que evite la duplicación o eliminación accidental de pagos durante el procesamiento de eventos.
-
-## REQ-TECH-12-08 (INT, MVP)
-El sistema debe procesar los webhooks de la pasarela de pago de forma idempotente, garantizando que un mismo evento no sea procesado más de una vez.
-
-# 📌 Requisitos CUST-07 — Catálogo de productos y carrito
-
-## 🧩 A) Exposición y obtención de productos (Backend / API)
-
-### REQ-CUST-07-01 (API, MVP)
-El backend debe exponer una función o endpoint que retorne la lista de todos los productos disponibles para venta.
-
-### REQ-CUST-07-02 (API, MVP)
-El backend debe utilizar un DTO (Data Transfer Object) para la respuesta del catálogo, el cual incluya únicamente la información necesaria para la vista de catálogo (por ejemplo: id, nombre, precio, imagen principal y estado de disponibilidad).
+- **REQ-CART-13 (FR, MVP)**  
+  El sistema debe recalcular los totales de forma inmediata ante cualquier cambio.
 
 ---
 
-## 🧩 B) Carrito de compras
+### C) Reglas de negocio y validaciones
 
-### REQ-CUST-07-03 (API, MVP)
-El backend debe exponer una función que permita agregar productos disponibles al carrito de compras.
+- **REQ-CART-14 (BR, MVP)**  
+  El sistema debe impedir que la cantidad solicitada supere el stock disponible.
 
-### REQ-CUST-07-04 (FUNC, MVP)
-El sistema debe permitir agregar un producto al carrito indicando la cantidad seleccionada y, cuando aplique, sus variantes disponibles.
+- **REQ-CART-15 (BR, MVP)**  
+  Si un producto del carrito queda no disponible, el sistema debe notificarlo y bloquear el checkout.
 
----
-
-## 🧩 C) Búsqueda de productos en el catálogo
-
-### REQ-CUST-07-05 (FUNC, MVP)
-El catálogo debe permitir buscar productos mediante texto ingresado por el usuario.
-
-### REQ-CUST-07-06 (UI, MVP)
-El catálogo debe incluir un campo (label/input) de texto visible para ingresar términos de búsqueda.
-
-### REQ-CUST-07-07 (FUNC, MVP)
-El sistema debe ejecutar la búsqueda de productos utilizando el contenido ingresado en el campo de texto de búsqueda.
+- **REQ-CART-16 (SEC, MVP)**  
+  El total del carrito debe calcularse usando precios vigentes validados en backend.
 
 ---
 
-## 🧩 D) Filtrado de productos
+### D) Persistencia del carrito (decisión MVP)
 
-### REQ-CUST-07-08 (FUNC, MVP)
-El catálogo debe permitir filtrar productos según criterios definidos (por ejemplo: categoría, precio, disponibilidad u otros).
-
-### REQ-CUST-07-09 (UI, MVP)
-El catálogo debe incluir un botón visible que permita acceder a las opciones de filtrado de productos.
-
-### REQ-CUST-07-10 (UX, MVP)
-La interfaz de filtrado debe permitir seleccionar opciones mediante interacción *drag and drop*, cuando aplique.
+- **REQ-CART-17 (DATA, MVP)**  
+  El carrito debe persistir al recargar la página utilizando `localStorage`.
 
 ---
 
-## 🧩 E) Estados del catálogo
+### E) Checkout (salida del carrito)
 
-### REQ-CUST-07-11 (UX, MVP)
-El sistema debe mostrar un mensaje informativo cuando no existan productos disponibles para mostrar en el catálogo.
+- **REQ-CHK-01 (FR, MVP)**  
+  Al presionar “Ir a pagar”, el sistema debe validar que el carrito sea válido y crear una intención de checkout.
+
+- **REQ-CHK-02 (BR, MVP)**  
+  Al iniciar el checkout, el sistema debe congelar el estado del carrito asociado al `order_id`.
 
 ---
 
-## 🧩 F) Acceso a ficha y detalle del producto
+### F) Errores y mensajes
 
-### REQ-CUST-07-12 (NAV, MVP)
-El sistema debe permitir acceder a la ficha o vista de detalle de un producto desde el catálogo.
+- **REQ-CART-18 (UX, MVP)**  
+  El sistema debe mostrar mensajes claros ante errores de actualización del carrito.
 
-### REQ-CUST-07-13 (UI, MVP)
-El catálogo debe incluir un botón visible que permita acceder a la vista de detalle del producto.
+- **REQ-CART-19 (UX, MVP)**  
+  Al vaciar el carrito, el sistema debe solicitar confirmación al usuario.
 
-### REQ-CUST-07-14 (FUNC, MVP)
-La ficha del producto debe permitir agregar el producto al carrito seleccionando cantidad y variantes disponibles.
+---
+
+### G) Seguridad mínima
+
+- **REQ-CART-20 (SEC, MVP)**  
+  El backend debe validar stock y totales antes del checkout.
+
+- **REQ-CART-21 (SEC, MVP)**  
+  Las operaciones del carrito deben protegerse contra requests inválidos.
+
+---
+
+### H) Analítica mínima
+
+- **REQ-CART-22 (ANA, MVP)**  
+  El sistema debe registrar eventos mínimos: `add_to_cart`, `remove_from_cart`, `begin_checkout`.
+
+---
+
+## 💳 3. PASARELA DE PAGO
+
+### A) Datos mínimos
+
+- **REQ-PAY-01 (DATA, MVP)**  
+  El sistema debe capturar nombre, email y teléfono del pagador.
+
+- **REQ-PAY-02 (DATA, MVP)**  
+  Si hay envío, el sistema debe capturar dirección de entrega o delegarla a la pasarela.
+
+- **REQ-PAY-03 (DATA, MVP)**  
+  El sistema debe generar un `order_id` único por intento de compra.
+
+---
+
+### B) Creación de transacción
+
+- **REQ-PAY-04 (INT, MVP)**  
+  El backend debe crear una sesión de pago con `order_id`, monto, moneda, ítems y datos del pagador.
+
+- **REQ-PAY-05 (FR, MVP)**  
+  El sistema debe redirigir o abrir el widget de la pasarela sin manejar datos sensibles en el servidor.
+
+---
+
+### C) Retorno del usuario
+
+- **REQ-PAY-06 (FR, MVP)**  
+  El sistema debe contar con una URL de resultado que muestre el estado del pago.
+
+- **REQ-PAY-07 (UX, MVP)**  
+  La pantalla de resultado debe mostrar estado, referencia, valor, moneda y fecha.
+
+---
+
+### D) Confirmación backend (CRÍTICO)
+
+- **REQ-PAY-08 (INT, MVP)**  
+  El sistema debe recibir confirmación server-to-server mediante webhooks.
+
+- **REQ-PAY-09 (SEC, MVP)**  
+  El backend debe validar la autenticidad de la notificación recibida.
+
+- **REQ-PAY-10 (SEC, MVP)**  
+  El procesamiento de webhooks debe ser idempotente.
+
+---
+
+## 📑 4. PEDIDO INTERNO (sin usuarios)
+
+### Estados posibles
+- `PENDIENTE_PAGO`
+- `PAGADO`
+- `RECHAZADO`
+- `EXPIRADO`
+
+---
+
+- **REQ-ORD-01 (DATA, MVP)**  
+  El sistema debe crear un pedido interno con estado `PENDIENTE_PAGO` antes del pago.
+
+- **REQ-ORD-02 (FR, MVP)**  
+  Al recibir confirmación, el pedido debe actualizar su estado y almacenar el `transaction_id`.
+
+- **REQ-ORD-03 (FR, MVP)**  
+  El sistema debe permitir buscar pedidos por `order_id` para soporte.
+
+- **REQ-ORD-04 (BR, MVP)**  
+  Si un pedido permanece en `PENDIENTE_PAGO` por más de un tiempo definido, debe marcarse como `EXPIRADO`.
+
+---
+
+## 🌱 5. CONTENIDO Y CONTACTO (LANDING)
+
+### Problemática ambiental
+
+- **REQ-CUST-01 (UI, MVP)**  
+  El sistema debe mostrar información descriptiva de la problemática ambiental al ingresar a la página.
+
+- **REQ-CUST-02 (UI, MVP)**  
+  El sistema debe mostrar contenido visual asociado a la problemática.
+
+- **REQ-CUST-03 (UX, MVP)**  
+  Las imágenes deben presentarse de forma fluida y optimizada.
+
+---
+
+### Logros del equipo
+
+- **REQ-CUST-04 (UI, MVP)**  
+  El sistema debe mostrar información sobre logros y reconocimientos del equipo.
+
+- **REQ-CUST-05 (UX, MVP)**  
+  Los logros deben presentarse de forma clara y ordenada.
+
+---
+
+### Medios de contacto
+
+- **REQ-CUST-06 (UI, MVP)**  
+  El sistema debe mostrar los medios de contacto disponibles.
+
+- **REQ-CUST-07 (UI, MVP)**  
+  El sistema debe mostrar enlaces funcionales a cada medio de contacto.
+
+- **REQ-CUST-08 (UI, MVP)**  
+  El sistema debe disponer de un botón específico por cada medio de contacto.
+
+- **REQ-CUST-09 (INT, MVP)**  
+  El sistema puede integrar los medios de contacto mediante APIs o esquemas externos cuando aplique.
+
+---
+
+## 🧪 6. REQUISITOS TÉCNICOS — FORMULARIO Y PASARELA
+
+- **REQ-TECH-01 (UI, MVP)**  
+  El sistema debe contar con una vista dedicada para el formulario de pago.
+
+- **REQ-TECH-02 (SEC, MVP)**  
+  El formulario debe operar bajo HTTPS.
+
+- **REQ-TECH-03 (INT, MVP)**  
+  El sistema debe conectarse de forma segura con la API de la pasarela seleccionada.
+
+- **REQ-TECH-04 (INT, MVP)**  
+  El sistema debe enviar los datos requeridos a la pasarela para crear la transacción.
+
+- **REQ-TECH-05 (INT, MVP)**  
+  El sistema debe recibir el estado de la transacción desde la pasarela.
+
+- **REQ-TECH-06 (INT, MVP)**  
+  El sistema debe notificar el estado del pago a un correo de soporte.
+
+- **REQ-TECH-07 (SEC, MVP)**  
+  El sistema debe evitar duplicación o eliminación accidental de pagos.
+
+- **REQ-TECH-08 (SEC, MVP)**  
+  El procesamiento de eventos de pago debe ser idempotente.
+
+---
