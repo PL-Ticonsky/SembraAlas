@@ -1,6 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 html {
   scroll-behavior: smooth;
@@ -31,4 +29,91 @@ h3 {
   max-width: var(--container);
   margin: 0 auto;
   padding: 0 1.25rem;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 700ms ease, transform 700ms ease;
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+/* HERO STICKY premium: sección larga, pero solo el “frame” es sticky */
+.hero-shell {
+  position: relative;
+  height: 200vh;
+}
+
+.hero-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden; /* evita cosas raras al hacer scroll */
+}
+
+/* Fondo siempre detrás (no sticky) */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background: var(--forest);
+  z-index: 0;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url("/images/hero-test.jpg");
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+  will-change: transform;
+}
+
+/* Contenido SIEMPRE encima */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  color: white;
+}
+
+.hero-scroll {
+  position: absolute;
+  left: 50%;
+  bottom: 2.5rem;
+  transform: translateX(-50%);
+  z-index: 3;
+
+  color: rgba(255, 255, 255, 0.75);
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  font-size: 12px;
+  text-decoration: none;
+}
+
+.hero-scroll i {
+  display: block;
+  width: 1px;
+  height: 32px;
+  margin: 10px auto 0;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.hero-scroll:hover {
+  color: white;
 }

@@ -1,0 +1,27 @@
+---
+const {
+  kicker,
+  title,
+  subtitle,
+  align = "left",
+  className = "",
+} = Astro.props;
+
+const alignCls = align === "center" ? "text-center mx-auto" : "text-left";
+---
+
+<header class={`max-w-[70ch] ${alignCls} ${className}`}>
+  {kicker && (
+    <p class="text-sm tracking-[0.2em] uppercase text-[var(--muted)]">
+      {kicker}
+    </p>
+  )}
+
+  <h2 class="text-4xl md:text-5xl mt-3 text-[var(--text)]">{title}</h2>
+
+  {subtitle && (
+    <p class="mt-4 text-lg text-[var(--muted)]">
+      {subtitle}
+    </p>
+  )}
+</header>

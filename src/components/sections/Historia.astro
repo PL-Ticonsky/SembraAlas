@@ -1,9 +1,37 @@
-<section id="historia" class="py-24">
-  <div class="container max-w-3xl">
-    <h2 class="text-4xl">Historia del proyecto</h2>
-    <p class="mt-4 text-[var(--muted)]">
-      Placeholder: aquí irá el contenido editorial (Markdown) con la historia real del
-      proyecto.
-    </p>
+---
+import SectionTitle from "../ui/SectionTitle.astro";
+import Card from "../ui/Card.astro";
+---
+
+<section id="historia" class="py-20">
+  <div class="container reveal">
+    <SectionTitle
+      kicker="Historia"
+      title="De una idea a una restauración medible"
+      subtitle="Sembralas nace con enfoque académico y evidencia verificable."
+    />
+
+    <div class="mt-10 grid gap-6 md:grid-cols-3">
+      <Card>
+        <h3 class="text-xl">Enfoque</h3>
+        <p class="mt-2 text-[var(--muted)]">
+          Reforestación con medición, seguimiento y documentación.
+        </p>
+      </Card>
+
+      <Card>
+        <h3 class="text-xl">Territorio</h3>
+        <p class="mt-2 text-[var(--muted)]">
+          Jornadas reales con aliados y comunidades.
+        </p>
+      </Card>
+
+      <Card>
+        <h3 class="text-xl">Transparencia</h3>
+        <p class="mt-2 text-[var(--muted)]">
+          Datos estructurados + evidencia visual por jornada.
+        </p>
+      </Card>
+    </div>
   </div>
 </section>
