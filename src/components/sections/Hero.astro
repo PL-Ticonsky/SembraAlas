@@ -6,7 +6,18 @@ import Button from "../ui/Button.astro";
 <section id="hero" class="relative">
   <div class="hero-shell">
     <div class="hero-sticky">
-      <div id="heroBg" class="hero-bg" aria-hidden="true"></div>
+      <picture id="heroBg" class="hero-bg" aria-hidden="true">
+  <source srcset="/images/hero-test.avif" type="image/avif" />
+  <source srcset="/images/hero-test.webp" type="image/webp" />
+  <img
+    src="/images/hero-test.jpg"
+    alt=""
+    width="1920"
+    height="1080"
+    fetchpriority="high"
+    decoding="async"
+  />
+</picture>
 
 
       <div class="container hero-content">

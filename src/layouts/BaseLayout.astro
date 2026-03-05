@@ -10,7 +10,11 @@ const { title = "Sembralas" } = Astro.props;
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
+
+    <link rel="preload" as="image" href="/images/hero.avif" type="image/avif" />
+    <link rel="preload" as="image" href="/images/hero.webp" type="image/webp" />
   </head>
+
 
   <body>
     <slot />

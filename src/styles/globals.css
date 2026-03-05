@@ -64,22 +64,37 @@ h3 {
   overflow: hidden; /* evita cosas raras al hacer scroll */
 }
 
-/* Fondo siempre detrás (no sticky) */
+/* Fondo (picture + img) siempre detrás */
 .hero-bg {
   position: absolute;
   inset: 0;
-  background: var(--forest);
   z-index: 0;
+  background: var(--forest); /* fallback mientras carga */
+  will-change: transform;
+  transform: translateY(0) scale(1.05);
 }
 
-.hero-bg {
+/* La imagen dentro del <picture> */
+.hero-bg > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* Overlay editorial (sutil, premium) */
+.hero-bg::after {
+  content: "";
   position: absolute;
   inset: 0;
-  background-image: url("/images/hero-test.jpg");
-  background-size: cover;
-  background-position: center;
-  z-index: 0;
-  will-change: transform;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.35),
+    rgba(0, 0, 0, 0.12) 45%,
+    rgba(0, 0, 0, 0.45)
+  );
+  pointer-events: none;
 }
 
 /* Contenido SIEMPRE encima */
@@ -92,6 +107,7 @@ h3 {
   color: white;
 }
 
+/* Scroll hint */
 .hero-scroll {
   position: absolute;
   left: 50%;
