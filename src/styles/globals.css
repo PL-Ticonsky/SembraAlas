@@ -2,21 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
-html { scroll-behavior: smooth; }
-
-body{
-  margin:0;
-  color: var(--text);
-  background: var(--bg);
-  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+html {
+  scroll-behavior: smooth;
 }
 
-h1,h2,h3{
+body {
+  margin: 0;
+  color: var(--text);
+  background: var(--bg);
+  font-family:
+    Inter,
+    system-ui,
+    -apple-system,
+    Segoe UI,
+    Roboto,
+    Arial,
+    sans-serif;
+}
+
+h1,
+h2,
+h3 {
   font-family: "Playfair Display", ui-serif, Georgia, "Times New Roman", serif;
   letter-spacing: -0.02em;
 }
 
-.container{
+.container {
   max-width: var(--container);
   margin: 0 auto;
   padding: 0 1.25rem;

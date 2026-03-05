@@ -1,9 +1,9 @@
-:root{
-  --forest:#1E3D2F;
-  --moss:#2F5D46;
-  --ivory:#F4F1EA;
-  --stone:#5A5A5A;
-  --black:#111111;
+:root {
+  --forest: #1e3d2f;
+  --moss: #2f5d46;
+  --ivory: #f4f1ea;
+  --stone: #5a5a5a;
+  --black: #111111;
 
   --text: var(--black);
   --muted: var(--stone);
