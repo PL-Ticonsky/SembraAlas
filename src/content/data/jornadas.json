@@ -1,0 +1,38 @@
+[
+  {
+    "title": "Jornada de restauración en zona periurbana",
+    "date": "Marzo 2024",
+    "location": "Bogotá, Colombia",
+    "description": "Actividad enfocada en recuperación de cobertura vegetal con participación estudiantil, preparación del terreno y siembra guiada.",
+    "image": "/images/jornada-1.jpg",
+    "stats": [
+      "320 árboles",
+      "42 voluntarios",
+      "1 jornada"
+    ]
+  },
+  {
+    "title": "Siembra comunitaria con articulación académica",
+    "date": "Octubre 2023",
+    "location": "Cundinamarca, Colombia",
+    "description": "Jornada orientada a fortalecer la apropiación ambiental del territorio mediante trabajo colaborativo y registro del proceso.",
+    "image": "/images/jornada-2.jpg",
+    "stats": [
+      "180 árboles",
+      "28 voluntarios",
+      "2 aliados"
+    ]
+  },
+  {
+    "title": "Intervención de restauración y seguimiento inicial",
+    "date": "Junio 2023",
+    "location": "Sabana de Bogotá",
+    "description": "Proceso de intervención con enfoque en organización, documentación y seguimiento de acciones de restauración ecológica.",
+    "image": "/images/jornada-3.jpg",
+    "stats": [
+      "250 árboles",
+      "35 voluntarios",
+      "Seguimiento inicial"
+    ]
+  }
+]

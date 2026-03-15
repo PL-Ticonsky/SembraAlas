@@ -1,8 +1,39 @@
-<section id="galeria" class="py-24">
+---
+import galeria from "../../content/data/galeria.json";
+
+const cardClasses = [
+  "gallery-card gallery-card--hero reveal",
+  "gallery-card gallery-card--tall reveal",
+  "gallery-card gallery-card--small reveal",
+  "gallery-card gallery-card--small reveal",
+  "gallery-card gallery-card--wide reveal"
+];
+---
+
+<section id="galeria" class="section">
   <div class="container">
-    <h2 class="text-4xl">Galería</h2>
-    <p class="mt-4 text-[var(--muted)] max-w-[70ch]">
-      Placeholder: grid de fotos reales optimizadas (lazy + AVIF).
-    </p>
+    <div class="gallery-head reveal">
+      <p class="gallery-eyebrow">Memoria visual</p>
+      <h2 class="gallery-title">La restauración también se documenta.</h2>
+      <p class="gallery-text">
+        Cada jornada deja evidencia real: territorio, participación y trabajo colectivo
+        en campo.
+      </p>
+    </div>
+
+    <div class="gallery-editorial">
+      {galeria.map((item, index) => (
+        <figure class={cardClasses[index]}>
+          <img
+            src={item.src}
+            alt={item.alt}
+            width={item.width}
+            height={item.height}
+            loading="lazy"
+            decoding="async"
+          />
+        </figure>
+      ))}
+    </div>
   </div>
 </section>

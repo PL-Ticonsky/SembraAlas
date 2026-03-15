@@ -1,0 +1,32 @@
+[
+  {
+    "src": "/images/gallery-1.jpg",
+    "alt": "Jornada de reforestación con voluntarios",
+    "width": 1200,
+    "height": 900
+  },
+  {
+    "src": "/images/gallery-2.jpg",
+    "alt": "Árbol sembrado durante actividad de restauración",
+    "width": 1200,
+    "height": 900
+  },
+  {
+    "src": "/images/gallery-3.jpg",
+    "alt": "Participantes en jornada ambiental",
+    "width": 1200,
+    "height": 900
+  },
+  {
+    "src": "/images/gallery-4.jpg",
+    "alt": "Paisaje restaurado en actividad de reforestación",
+    "width": 1200,
+    "height": 900
+  },
+  {
+    "src": "/images/gallery-5.jpg",
+    "alt": "Grupo de voluntarios en jornada de siembra",
+    "width": 1600,
+    "height": 1000
+  }
+]

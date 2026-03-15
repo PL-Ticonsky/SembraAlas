@@ -1,8 +1,43 @@
-<section id="premios" class="py-24 bg-[rgba(30,61,47,0.06)]">
+---
+import premios from "../../content/data/premios.json";
+---
+
+<section id="premios" class="awards-section">
   <div class="container">
-    <h2 class="text-4xl">Premios y reconocimientos</h2>
-    <p class="mt-4 text-[var(--muted)] max-w-[70ch]">
-      Placeholder: listado de logros con año y entidad.
-    </p>
+
+    <div class="awards-head reveal">
+      <p class="awards-eyebrow">Reconocimiento</p>
+      <h2 class="awards-title">
+        El proyecto también ha sido reconocido.
+      </h2>
+
+      <p class="awards-text">
+        Sembralas ha sido presentado en espacios académicos y de innovación
+        ambiental donde su enfoque de restauración documentada ha recibido
+        reconocimiento institucional.
+      </p>
+    </div>
+
+    <div class="awards-list">
+      {premios.map((award) => (
+        <article class="award-item reveal">
+
+          <div class="award-meta">
+            <span class="award-org">{award.organization}</span>
+            <span class="award-year">{award.year}</span>
+          </div>
+
+          <h3 class="award-title">
+            {award.title}
+          </h3>
+
+          <p class="award-description">
+            {award.description}
+          </p>
+
+        </article>
+      ))}
+    </div>
+
   </div>
 </section>

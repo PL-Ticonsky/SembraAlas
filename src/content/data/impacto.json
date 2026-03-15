@@ -1,14 +1,22 @@
 [
   {
-    "numero": 3240,
-    "label": "Árboles sembrados"
+    "value": 3240,
+    "label": "Árboles sembrados",
+    "suffix": "+"
   },
   {
-    "numero": 18,
-    "label": "Jornadas realizadas"
+    "value": 18,
+    "label": "Jornadas realizadas",
+    "suffix": ""
   },
   {
-    "numero": 540,
-    "label": "Voluntarios"
+    "value": 420,
+    "label": "Voluntarios vinculados",
+    "suffix": "+"
+  },
+  {
+    "value": 6,
+    "label": "Reconocimientos obtenidos",
+    "suffix": ""
   }
 ]

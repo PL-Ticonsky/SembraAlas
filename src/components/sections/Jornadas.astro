@@ -1,8 +1,50 @@
-<section id="jornadas" class="py-24">
+---
+import jornadas from "../../content/data/jornadas.json";
+---
+
+<section id="jornadas" class="journeys-section">
   <div class="container">
-    <h2 class="text-4xl">Proyectos / Jornadas</h2>
-    <p class="mt-4 text-[var(--muted)] max-w-[70ch]">
-      Placeholder: cards con fecha, lugar, objetivo, fotos y resultados.
-    </p>
+    <div class="journeys-head reveal">
+      <p class="journeys-eyebrow">Jornadas destacadas</p>
+      <h2 class="journeys-title">Cada intervención deja un registro concreto.</h2>
+      <p class="journeys-text">
+        Sembralas desarrolla jornadas documentadas que combinan restauración,
+        participación y seguimiento del proceso en territorio.
+      </p>
+    </div>
+
+    <div class="journeys-list">
+      {jornadas.map((jornada, index) => (
+        <article class={`journey-item reveal ${index % 2 !== 0 ? "journey-item--reverse" : ""}`}>
+          <div class="journey-media">
+            <img
+              src={jornada.image}
+              alt={jornada.title}
+              width="1400"
+              height="1000"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+
+          <div class="journey-body">
+            <div class="journey-meta">
+              <span>{jornada.date}</span>
+              <span>{jornada.location}</span>
+            </div>
+
+            <h3 class="journey-title">{jornada.title}</h3>
+
+            <p class="journey-description">{jornada.description}</p>
+
+            <ul class="journey-stats">
+              {jornada.stats.map((stat) => (
+                <li>{stat}</li>
+              ))}
+            </ul>
+          </div>
+        </article>
+      ))}
+    </div>
   </div>
 </section>

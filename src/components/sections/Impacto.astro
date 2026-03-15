@@ -1,19 +1,27 @@
-<section id="impacto" class="py-24 bg-[rgba(30,61,47,0.06)]">
+---
+import impacto from "../../content/data/impacto.json";
+---
+
+<section id="impacto" class="impact-section">
   <div class="container">
-    <h2 class="text-4xl">Impacto en números</h2>
-    <div class="mt-10 grid md:grid-cols-3 gap-8">
-      <div class="p-6 rounded-2xl bg-white shadow-sm">
-        <p class="text-5xl font-semibold">0</p>
-        <p class="mt-2 text-[var(--muted)]">Árboles sembrados</p>
-      </div>
-      <div class="p-6 rounded-2xl bg-white shadow-sm">
-        <p class="text-5xl font-semibold">0</p>
-        <p class="mt-2 text-[var(--muted)]">Jornadas realizadas</p>
-      </div>
-      <div class="p-6 rounded-2xl bg-white shadow-sm">
-        <p class="text-5xl font-semibold">0</p>
-        <p class="mt-2 text-[var(--muted)]">Voluntarios</p>
-      </div>
+    <div class="impact-head reveal">
+      <p class="impact-eyebrow">Impacto medible</p>
+      <h2 class="impact-title">Resultados que pueden mostrarse.</h2>
+      <p class="impact-text">
+        Sembralas convierte el trabajo ambiental en evidencia concreta: jornadas,
+        participación y restauración documentada.
+      </p>
+    </div>
+
+    <div class="impact-grid">
+      {impacto.map((item) => (
+        <article class="impact-card reveal">
+<p class="impact-value">
+  <span class="impact-number">{item.value.toLocaleString("es-CO")}</span><span class="impact-suffix">{item.suffix}</span>
+</p>
+          <p class="impact-label">{item.label}</p>
+        </article>
+      ))}
     </div>
   </div>
 </section>
