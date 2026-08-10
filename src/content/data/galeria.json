@@ -1,32 +1,22 @@
 [
   {
-    "src": "/images/gallery-1.jpg",
-    "alt": "Jornada de reforestación con voluntarios",
-    "width": 1200,
-    "height": 900
+    "image": "gallery-1",
+    "alt": "Colinas verdes con árboles dispersos"
   },
   {
-    "src": "/images/gallery-2.jpg",
-    "alt": "Árbol sembrado durante actividad de restauración",
-    "width": 1200,
-    "height": 900
+    "image": "gallery-2",
+    "alt": "Venado en una pradera frente a una montaña rocosa"
   },
   {
-    "src": "/images/gallery-3.jpg",
-    "alt": "Participantes en jornada ambiental",
-    "width": 1200,
-    "height": 900
+    "image": "gallery-3",
+    "alt": "Camino entre un bosque iluminado por rayos de sol"
   },
   {
-    "src": "/images/gallery-4.jpg",
-    "alt": "Paisaje restaurado en actividad de reforestación",
-    "width": 1200,
-    "height": 900
+    "image": "gallery-4",
+    "alt": "Laderas verdes onduladas vistas desde la distancia"
   },
   {
-    "src": "/images/gallery-5.jpg",
-    "alt": "Grupo de voluntarios en jornada de siembra",
-    "width": 1600,
-    "height": 1000
+    "image": "gallery-5",
+    "alt": "Valle verde al atardecer con una formación circular de piedra"
   }
 ]
