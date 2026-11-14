@@ -1,43 +1,17 @@
-# Astro Starter Kit: Minimal
+<h1 align="center">SembraAlas</h1>
 
-```sh
-npm create astro@latest -- --template minimal
-```
+<p align="center">Sitio en Astro que presenta la historia, el impacto, las jornadas y la galería de SembraAlas.</p>
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+<p align="center">
+  <img src="https://img.shields.io/badge/Proyecto-Astro-285842" alt="Astro">
+</p>
 
-## 🚀 Project Structure
+[Página principal](src/pages/index.astro) · [Galería](public/images/)
 
-Inside of your Astro project, you'll see the following folders and files:
+## Secciones del sitio
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+La página reúne la historia y el impacto del proyecto, jornadas, premios, una galería y formas de apoyo.
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Desarrollo local
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Con Node.js y npm instalados, ejecuta `npm ci` y después `npm run dev` desde la raíz. Abre la dirección que muestra la terminal.
