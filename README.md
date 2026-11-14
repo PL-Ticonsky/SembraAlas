@@ -3,6 +3,10 @@
 <p align="center">Sitio en Astro que presenta la historia, el impacto, las jornadas y la galería de SembraAlas.</p>
 
 <p align="center">
+  <a href="LICENSE"><img src="https://img.shields.io/badge/Licencia-MIT-184b3a" alt="Licencia MIT"></a>
+</p>
+
+<p align="center">
   <img src="https://img.shields.io/badge/Proyecto-Astro-285842" alt="Astro">
 </p>
 
