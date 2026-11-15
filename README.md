@@ -22,6 +22,18 @@ Un recorrido por la portada, la historia, las jornadas, las cifras de impacto y 
 - **Cómo apoyar.** Una página dedicada a explicar qué puede hacer posible un aporte.
 - **Imágenes ligeras.** Astro genera variantes WebP según el tamaño de pantalla. Las fotos fuera de la portada se cargan a medida que el visitante se acerca.
 
+## Cómo se construye el recorrido
+
+Astro convierte los datos y las imágenes del proyecto en dos páginas estáticas. Si hay un canal oficial de donaciones configurado, la página de apoyo enlaza a él.
+
+```mermaid
+flowchart LR
+    A["Jornadas, cifras y reconocimientos"] --> C["Astro · compila el sitio"]
+    B["Fotografías"] -->|Variantes WebP| C
+    C --> D["Portada · historia e impacto"]
+    C --> E["Cómo apoyar · opciones de aporte"]
+```
+
 ## Inicio local
 
 ```bash
