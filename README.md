@@ -11,14 +11,9 @@ Una landing que cuenta el recorrido de SembraAlas, una iniciativa de reforestaci
 
 ## Vista previa
 
-<a href="docs/media/portada.jpg"><img src="docs/media/portada.jpg" width="680" alt="Portada de SembraAlas con una fotografía del bosque y el título El bosque vuelve a crecer"></a>
+Un recorrido por la portada, la historia, las jornadas, las cifras de impacto y los reconocimientos.
 
-<details>
-<summary>Ver el recorrido en GIF</summary>
-
-<img src="docs/media/recorrido.gif" width="560" alt="Recorrido por la portada, la historia, las jornadas, las cifras de impacto y los reconocimientos">
-
-</details>
+<a href="docs/media/recorrido.gif"><img src="docs/media/recorrido.gif" width="680" alt="GIF del desplazamiento por las secciones de SembraAlas"></a>
 
 ## Qué incluye
 
@@ -48,7 +43,7 @@ Copia `.env.example` a `.env` y define `SEMBRA_DONATION_URL` con el enlace HTTPS
 | `src/content/data/` | Jornadas, cifras, reconocimientos y galería |
 | `src/assets/images/` | Imágenes del sitio |
 | `src/styles/` | Estilos del recorrido |
-| `docs/media/` | Captura y GIF de este README |
+| `docs/media/` | GIF del recorrido |
 
 Las fotografías editoriales de la portada y la historia se acreditan en el pie del sitio. Los paisajes que acompañan las jornadas son ilustrativos.
 
