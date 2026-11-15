@@ -5,6 +5,7 @@ Una landing que cuenta el recorrido de SembraAlas, una iniciativa de reforestaci
 ![Astro](https://img.shields.io/badge/Astro-Sitio%20estático-333b2a?logo=astro&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-Interacciones-333b2a?logo=typescript&logoColor=white)
 ![WebP](https://img.shields.io/badge/WebP-Imágenes%20adaptables-626a43)
+[![Licencia MIT](https://img.shields.io/badge/Licencia-MIT-626a43)](LICENSE)
 
 [Vista previa](#vista-previa) · [Inicio local](#inicio-local) · [Canal de donaciones](#canal-de-donaciones)
 
@@ -50,3 +51,7 @@ Copia `.env.example` a `.env` y define `SEMBRA_DONATION_URL` con el enlace HTTPS
 | `docs/media/` | Captura y GIF de este README |
 
 Las fotografías editoriales de la portada y la historia se acreditan en el pie del sitio. Los paisajes que acompañan las jornadas son ilustrativos.
+
+## Licencia
+
+Distribuido bajo la [licencia MIT](LICENSE).
