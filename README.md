@@ -13,7 +13,7 @@ Una landing que cuenta el recorrido de SembraAlas, una iniciativa de reforestaci
 
 Un recorrido por la portada, la historia, las jornadas, las cifras de impacto y los reconocimientos.
 
-<a href="docs/media/recorrido.gif"><img src="docs/media/recorrido.gif" width="680" alt="GIF del desplazamiento por las secciones de SembraAlas"></a>
+<a href="docs/media/recorrido.gif"><img src="docs/media/recorrido.gif" width="500" alt="GIF del desplazamiento por las secciones de SembraAlas"></a>
 
 ## Qué incluye
 
