@@ -1,43 +1,52 @@
-# Astro Starter Kit: Minimal
+# SembraAlas · Restauración en territorio
 
-```sh
-npm create astro@latest -- --template minimal
+Una landing que cuenta el recorrido de SembraAlas, una iniciativa de reforestación con enfoque académico. Desde la portada puedes explorar la historia, las jornadas de siembra, los resultados y las formas de apoyar el cuidado de lo sembrado.
+
+![Astro](https://img.shields.io/badge/Astro-Sitio%20estático-333b2a?logo=astro&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-Interacciones-333b2a?logo=typescript&logoColor=white)
+![WebP](https://img.shields.io/badge/WebP-Imágenes%20adaptables-626a43)
+
+[Vista previa](#vista-previa) · [Inicio local](#inicio-local) · [Canal de donaciones](#canal-de-donaciones)
+
+## Vista previa
+
+<a href="docs/media/portada.jpg"><img src="docs/media/portada.jpg" width="680" alt="Portada de SembraAlas con una fotografía del bosque y el título El bosque vuelve a crecer"></a>
+
+<details>
+<summary>Ver el recorrido en GIF</summary>
+
+<img src="docs/media/recorrido.gif" width="560" alt="Recorrido por la portada, la historia, las jornadas, las cifras de impacto y los reconocimientos">
+
+</details>
+
+## Qué incluye
+
+- **Historia y jornadas.** Un recorrido visual por el origen del proyecto y el trabajo en territorio.
+- **Impacto y reconocimientos.** Indicadores del proyecto y una sección visible con sus distinciones.
+- **Cómo apoyar.** Una página dedicada a explicar qué puede hacer posible un aporte.
+- **Imágenes ligeras.** Astro genera variantes WebP según el tamaño de pantalla. Las fotos fuera de la portada se cargan a medida que el visitante se acerca.
+
+## Inicio local
+
+```bash
+npm ci
+npm run dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Abre [localhost:4321](http://localhost:4321/). Para generar el sitio estático en `dist/`, ejecuta `npm run build`.
 
-## 🚀 Project Structure
+## Canal de donaciones
 
-Inside of your Astro project, you'll see the following folders and files:
+Copia `.env.example` a `.env` y define `SEMBRA_DONATION_URL` con el enlace HTTPS oficial si ya está disponible. Reinicia el servidor local o vuelve a compilar el sitio publicado para activar el enlace. Mientras la variable esté vacía, la página explica cómo apoyar y muestra que aún no hay canal publicado.
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+## Estructura
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+| Carpeta | Contenido |
+| --- | --- |
+| `src/pages/` | Portada y página de apoyo |
+| `src/content/data/` | Jornadas, cifras, reconocimientos y galería |
+| `src/assets/images/` | Imágenes del sitio |
+| `src/styles/` | Estilos del recorrido |
+| `docs/media/` | Captura y GIF de este README |
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Las fotografías editoriales de la portada y la historia se acreditan en el pie del sitio. Los paisajes que acompañan las jornadas son ilustrativos.

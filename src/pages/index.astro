@@ -1,23 +1,190 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
+import { Image } from "astro:assets";
+import canopy from "../assets/images/canopy-editorial.jpg";
+import woodland from "../assets/images/woodland-editorial.jpg";
+import { galleryImages, journeyImages, type GalleryImageKey, type JourneyImageKey } from "../assets/images";
+import journeys from "../content/data/jornadas.json";
+import impact from "../content/data/impacto.json";
+import awards from "../content/data/premios.json";
+import gallery from "../content/data/galeria.json";
+import "../styles/landing.css";
 
-import Hero from "../components/sections/Hero.astro";
-import Historia from "../components/sections/Historia.astro";
-import Impacto from "../components/sections/Impacto.astro";
-import Jornadas from "../components/sections/Jornadas.astro";
-import Premios from "../components/sections/Premios.astro";
-import Galeria from "../components/sections/Galeria.astro";
-import Apoyar from "../components/sections/Apoyar.astro";
-import Footer from "../components/sections/Footer.astro";
+const number = new Intl.NumberFormat("es-CO");
+const nav = [
+  ["historia", "Historia"],
+  ["jornadas", "Jornadas"],
+  ["impacto", "Impacto"],
+  ["reconocimientos", "Reconocimientos"],
+];
 ---
 
-<BaseLayout title="Sembralas">
-  <Hero />
-  <Historia />
-  <Impacto />
-  <Jornadas />
-  <Premios />
-  <Galeria />
-  <Apoyar />
-  <Footer />
-</BaseLayout>
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Conoce el recorrido de SembraAlas, un proyecto de reforestación y restauración con enfoque académico." />
+    <link rel="icon" href="/favicon.ico" />
+    <title>SembraAlas · Restauración en territorio</title>
+  </head>
+  <body id="top">
+    <a class="skip" href="#contenido">Saltar al contenido</a>
+    <header class="topbar">
+      <div class="wrap nav-row">
+        <a class="brand" href="#top">Sembra<span>Alas</span></a>
+        <nav aria-label="Recorrido">
+          {nav.map(([id, label]) => <a href={`#${id}`}>{label}</a>)}
+          <a class="nav-action" href="/apoyar/">Cómo apoyar <span aria-hidden="true">↗</span></a>
+        </nav>
+      </div>
+      <div class="reading-progress" aria-hidden="true"></div>
+    </header>
+
+    <main id="contenido">
+      <section class="hero" aria-labelledby="hero-title">
+        <Image src={canopy} alt="" width={1080} widths={[480, 768, 1080, 1440, 1600]} sizes="100vw" format="webp" quality={68} loading="eager" fetchpriority="high" />
+        <div class="hero-shade"></div>
+        <div class="wrap hero-copy">
+          <p class="label">Reforestación con respaldo académico</p>
+          <h1 id="hero-title">El bosque<br /> <em>vuelve a crecer.</em></h1>
+          <p>Conoce las jornadas de siembra, las personas que las hacen posibles y el trabajo que continúa después de plantar.</p>
+          <a class="hero-link" href="#historia"><span aria-hidden="true">↓</span> Seguir el recorrido</a>
+        </div>
+      </section>
+
+      <section id="historia" class="wrap chapter story">
+        <div class="story-image">
+          <Image src={woodland} alt="Luz entre los árboles de un bosque" width={720} widths={[480, 720, 1080]} sizes="(max-width: 760px) 92vw, 46vw" format="webp" quality={68} loading="lazy" decoding="async" />
+        </div>
+        <div class="story-steps">
+          <article data-step>
+            <p class="label">Nuestra historia</p>
+            <h2>La siembra es el comienzo.</h2>
+            <p>SembraAlas nació como un proyecto académico de reforestación. Reúne a estudiantes, comunidades y aliados para recuperar la cobertura vegetal.</p>
+          </article>
+          <article data-step>
+            <h3>Trabajo en territorio</h3>
+            <p>Cada jornada requiere preparar el terreno, organizar al equipo y acompañar la siembra.</p>
+          </article>
+          <article data-step>
+            <h3>Seguimiento</h3>
+            <p>El registro de las jornadas y de las acciones de restauración permite dar continuidad al trabajo.</p>
+            <a class="text-link" href="#jornadas">Ver las jornadas ↓</a>
+          </article>
+        </div>
+      </section>
+
+      <section id="jornadas" class="field">
+        <div class="wrap chapter">
+          <p class="label">En territorio</p>
+          <h2>Jornadas de siembra</h2>
+          <div class="journeys">
+            {journeys.map((journey) => (
+              <article class="journey" data-step>
+                <Image src={journeyImages[journey.image as JourneyImageKey]} alt={journey.imageAlt} width={640} widths={[400, 640, 900]} sizes="(max-width: 760px) 92vw, 44vw" format="webp" quality={66} loading="lazy" decoding="async" />
+                <div>
+                  <p class="label">{journey.date} · {journey.location}</p>
+                  <h3>{journey.title}</h3>
+                  <p>{journey.description}</p>
+                  <ul class="stats">{journey.stats.map((stat) => <li>{stat}</li>)}</ul>
+                </div>
+              </article>
+            ))}
+          </div>
+          <p class="image-note">Fotografías de paisaje ilustrativas.</p>
+        </div>
+      </section>
+
+      <section id="impacto" class="impact">
+        <div class="wrap chapter">
+          <p class="label">Balance del proyecto</p>
+          <h2>La restauración en cifras</h2>
+          <dl class="metrics">
+            {impact.map((metric) => (
+              <div data-step>
+                <dt>{metric.label}</dt>
+                <dd>{number.format(metric.value)}{metric.suffix}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </section>
+
+      <section id="reconocimientos" class="recognitions">
+        <div class="wrap chapter recognition-layout">
+          <div class="recognition-heading">
+            <p class="label">Trayectoria</p>
+            <h2>Reconocimientos</h2>
+          </div>
+          <ol class="recognition-list">
+            {awards.map((award) => (
+              <li class="recognition-item" data-step>
+                <p class="recognition-year">{award.year}</p>
+                <div>
+                  <p class="label">{award.organization}</p>
+                  <h3>{award.title}</h3>
+                  <p class="recognition-description">{award.description}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      <section id="galeria" class="wrap chapter">
+        <p class="label">Paisajes</p>
+        <h2>Una mirada al bosque</h2>
+        <div class="gallery">
+          {gallery.map((photo, index) => (
+            <Image src={galleryImages[photo.image as GalleryImageKey]} alt={photo.alt} width={480} widths={[320, 480, 720, 960]} sizes={index === 0 ? "(max-width: 760px) 92vw, 62vw" : "(max-width: 760px) 46vw, 31vw"} format="webp" quality={64} loading="lazy" decoding="async" />
+          ))}
+        </div>
+      </section>
+
+      <section id="apoyar" class="support">
+        <div class="wrap chapter">
+          <p class="label">Participa</p>
+          <h2>Cómo apoyar</h2>
+          <p>Tu aporte puede ayudar a preparar una jornada, conseguir insumos y cuidar lo sembrado.</p>
+          <a class="donation-button" href="/apoyar/">Conoce cómo donar <span aria-hidden="true">↗</span></a>
+        </div>
+      </section>
+    </main>
+    <footer class="wrap footer">
+      <a class="brand" href="#top">Sembra<span>Alas</span></a>
+      <p>Fotografías editoriales: <a href="https://images.unsplash.com/photo-1473448912268-2022ce9509d8">bosque</a> y <a href="https://images.unsplash.com/photo-1441974231531-c6227db76b6e">sendero</a> en Unsplash.</p>
+      <a href="#top">Volver arriba ↑</a>
+    </footer>
+
+    <script>
+      const links = document.querySelectorAll<HTMLAnchorElement>(".topbar nav a");
+      const sections = Array.from(links).flatMap((link) => {
+        const section = document.getElementById(link.hash.slice(1));
+        return section ? [section] : [];
+      });
+      if ("IntersectionObserver" in window) {
+        const navigation = new IntersectionObserver((entries) => {
+          for (const entry of entries) {
+            if (!entry.isIntersecting) continue;
+            links.forEach((link) => {
+              if (link.hash === `#${entry.target.id}`) link.setAttribute("aria-current", "location");
+              else link.removeAttribute("aria-current");
+            });
+          }
+        }, { rootMargin: "-18% 0px -62%" });
+        sections.forEach((section) => navigation.observe(section));
+
+        if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
+          const reveal = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return;
+              entry.target.classList.add("arrived");
+              reveal.unobserve(entry.target);
+            });
+          }, { threshold: 0.12 });
+          document.querySelectorAll("[data-step]").forEach((section) => reveal.observe(section));
+        }
+      }
+    </script>
+  </body>
+</html>

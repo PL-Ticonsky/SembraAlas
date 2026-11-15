@@ -1,0 +1,88 @@
+---
+import { Image } from "astro:assets";
+import woodland from "../assets/images/woodland-editorial.jpg";
+import "../styles/landing.css";
+
+const configuredUrl = import.meta.env.SEMBRA_DONATION_URL?.trim();
+let donationUrl: string | undefined;
+if (configuredUrl) {
+  try {
+    const url = new URL(configuredUrl);
+    if (url.protocol === "https:") donationUrl = url.href;
+  } catch {
+    // Leave donations unavailable until a valid official URL is configured.
+  }
+}
+
+const uses = [
+  ["Preparar la siembra", "Conseguir herramientas, insumos y plantas adecuadas para cada terreno."],
+  ["Organizar las jornadas", "Apoyar el transporte, la logística y los materiales para los equipos de voluntariado."],
+  ["Cuidar lo sembrado", "Facilitar las visitas de seguimiento y el registro de lo que crece y de lo que necesita atención."],
+];
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Descubre cómo una donación puede apoyar las jornadas de restauración de SembraAlas y el cuidado de lo sembrado." />
+    <link rel="icon" href="/favicon.ico" />
+    <title>Cómo apoyar · SembraAlas</title>
+  </head>
+  <body id="top">
+    <a class="skip" href="#contenido">Saltar al contenido</a>
+    <header class="topbar">
+      <div class="wrap nav-row">
+        <a class="brand" href="/">Sembra<span>Alas</span></a>
+        <nav aria-label="Navegación">
+          <a href="/#jornadas">Jornadas</a>
+          <a href="/#impacto">Impacto</a>
+          <a class="nav-action" href="/apoyar/" aria-current="page">Cómo apoyar</a>
+        </nav>
+      </div>
+    </header>
+    <main id="contenido">
+      <section class="wrap chapter donation-hero" aria-labelledby="donation-title">
+        <div>
+          <p class="label">Apoya la restauración</p>
+          <h1 id="donation-title">Ayuda a que lo sembrado crezca.</h1>
+          <p>Una jornada de siembra empieza antes de llegar al terreno y continúa después. Tu aporte puede ayudar al equipo de SembraAlas a preparar el trabajo y volver a cuidar las plantas.</p>
+          <a class="donation-button" href={donationUrl ?? "#donar"}>
+            {donationUrl ? "Donar a SembraAlas" : "Cómo donar"} <span aria-hidden="true">↓</span>
+          </a>
+        </div>
+        <Image src={woodland} alt="Luz entre los árboles de un bosque" width={720} widths={[480, 720, 1080]} sizes="(max-width: 760px) 92vw, 42vw" format="webp" quality={68} loading="eager" fetchpriority="high" />
+      </section>
+      <section class="field">
+        <div class="wrap chapter">
+          <h2>¿Qué puede hacer posible tu aporte?</h2>
+          <div class="support-options">
+            {uses.map(([title, description]) => <article><h3>{title}</h3><p>{description}</p></article>)}
+          </div>
+        </div>
+      </section>
+      <section id="donar" class="support">
+        <div class="wrap chapter donation-close">
+          <div>
+            <h2>Haz un aporte</h2>
+            {donationUrl ? (
+              <><p>Continúa al canal oficial de SembraAlas para realizar tu donación.</p><a href={donationUrl} class="donation-button">Ir al canal de donación <span aria-hidden="true">↗</span></a></>
+            ) : (
+              <p>Por ahora, SembraAlas aún no tiene un canal de donaciones publicado en esta página.</p>
+            )}
+          </div>
+          <aside>
+            <h3>También puedes ayudar compartiendo</h3>
+            <p>Comparte el proyecto con personas, colectivos o instituciones que quieran apoyar la restauración.</p>
+            <a href="/#jornadas" class="text-link">Conoce el trabajo en territorio ↗</a>
+          </aside>
+        </div>
+      </section>
+    </main>
+    <footer class="wrap footer">
+      <a class="brand" href="/">Sembra<span>Alas</span></a>
+      <a href="/">Volver al inicio ↑</a>
+    </footer>
+  </body>
+</html>

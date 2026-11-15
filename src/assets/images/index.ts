@@ -3,12 +3,10 @@ import gallery2 from "./gallery-2.jpg";
 import gallery3 from "./gallery-3.jpg";
 import gallery4 from "./gallery-4.jpg";
 import gallery5 from "./gallery-5.jpg";
-import hero from "./hero.jpg";
 import jornada1 from "./jornada-1.jpg";
 import jornada2 from "./jornada-2.jpg";
 import jornada3 from "./jornada-3.jpg";
 
-export const heroImage = hero;
 
 export const journeyImages = {
   "jornada-1": jornada1,
